@@ -5,26 +5,39 @@ using TMPro;
 public class Book : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private string bookName;
+    [SerializeField] public string bookName;
+    [SerializeField] private string bookDescription;
     [SerializeField] private SkillType skill;
     [SerializeField] private float burnHeatValue = 10f;
     [SerializeField] private float readTimeCost = 30f;
 
     [Header("UI")]
-    [SerializeField] private GameObject infoPanel;
+    [SerializeField] private Canvas infoCanvas;
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] private Button burnButton;
     [SerializeField] private Button readButton;
 
-    private bool isInteractable = true;
+    public bool isInteractable = true;
+    public bool isBurned = false;
+    public bool isRead = false;
+    public bool HasDecision = false;
+    public bool IsAvailable = true;
 
     private void Start()
     {
         
-        infoPanel.SetActive(false);
-        description.text = bookName;
+        infoCanvas.gameObject.SetActive(false);
+        description.text = bookDescription;
         
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.E) && infoCanvas.gameObject.activeSelf)
+        {
+            ClosePanel();
+        }
+    }   
 
     private void OnMouseDown()
     {
@@ -34,13 +47,14 @@ public class Book : MonoBehaviour
         }
     }
 
-    private void Display()
+
+    public void Display()
     {
         // pause the game
         // GameManager.Instance.PauseGame();
         
         // display the info of the book
-        infoPanel.SetActive(true);
+        infoCanvas.gameObject.SetActive(true);
         description.gameObject.SetActive(true);
         burnButton.gameObject.SetActive(true);
         readButton.gameObject.SetActive(true);
@@ -50,51 +64,43 @@ public class Book : MonoBehaviour
 
     public void OnBurnSelected()
     {
-        Burn_book();
+        if (!isInteractable) return;
+
+        // update Heat & Time
+        //SurvivalSystem.Instance.AddHeat(burnHeatValue);
+       // TimeManager.Instance.AddTime(10f); 
+        isInteractable = false;
+        isBurned = true;
+        HasDecision = true;
+        IsAvailable = false;
+        
         ClosePanel();
         Debug.Log("Burning the book...");
     }
 
     public void OnReadSelected()
     {
-        Read_book();
+        if (!isInteractable) return;
+
+      //  TimeManager.Instance.SpendTime(readTimeCost);
+      //  SkillSystem.Instance.AcquireSkill(skill);
+        isInteractable = false;
+        isRead = true;
+        HasDecision = true;
+        IsAvailable = false;
+
         ClosePanel();
         Debug.Log("Reading the book...");
     }
 
-    public void Burn_book()
-    {
-        if (!isInteractable) return;
-
-        // update Heat & Time
-        SurvivalSystem.Instance.AddHeat(burnHeatValue);
-        TimeManager.Instance.AddTime(10f); 
-        
-        DestroyBook();
-    }
-
-    public void Read_book()
-    {
-        if (!isInteractable) return;
-
-        TimeManager.Instance.SpendTime(readTimeCost);
-        SkillSystem.Instance.AcquireSkill(skill);
-        
-        DestroyBook();  // Destroy the book after reading
-    }
 
     private void ClosePanel()
     {
-        infoPanel.SetActive(false);
+        infoCanvas.gameObject.SetActive(false);
         //GameManager.Instance.ResumeGame();
     }
 
-    private void DestroyBook()
-    {
-        isInteractable = false;
-        //BookSpawner.Instance.RemoveBookFromCurrentRoom(this);
-        Destroy(gameObject);
-    }
+
 }
 
 

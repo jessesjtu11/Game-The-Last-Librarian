@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7a647b6d59a1c4b9a3341559d61bb6, type: 3}
+  m_Name: Dialogue1
+  m_EditorClassIdentifier: 
+  dialogueSegments:
+  - backgroundImage: {fileID: 21300000, guid: 77ab16aaae291224c8f740c0fe8ee78c, type: 3}
+    dialogueText: The end of the world came.
+    textSpeed: 0.1
+  - backgroundImage: {fileID: 21300000, guid: df2790ecb8788b14197bbe655aed512f, type: 3}
+    dialogueText: The home of mankind  was destroyed.
+    textSpeed: 0.1
+  - backgroundImage: {fileID: 21300000, guid: 0e7fd6aba03135840aee3cfa043cb648, type: 3}
+    dialogueText: An endlss winter followed.
+    textSpeed: 0.1
+  - backgroundImage: {fileID: 21300000, guid: c8ce4ab839c402041b5f5810bb7731ba, type: 3}
+    dialogueText: You, a librarian, have to survive in the library.
+    textSpeed: 0.1
