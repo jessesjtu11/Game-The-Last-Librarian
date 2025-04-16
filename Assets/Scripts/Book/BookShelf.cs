@@ -136,7 +136,6 @@ public class BookShelf : MonoBehaviour
     private IEnumerator BookSelectionProcess(Book book)
     {
         Debug.Log($"开始处理书籍: {book.bookName}");
-        // 显示书籍详细信息
         book.Display();
         
         // 等待玩家决策

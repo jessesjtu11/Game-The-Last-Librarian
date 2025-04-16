@@ -15,14 +15,14 @@ public abstract class Room : MonoBehaviour
     [SerializeField] private Transform interactiveObjectsContainer;
     
     private Dictionary<string, GameObject> spawnedObjects = new Dictionary<string, GameObject>();
-    private Coroutine zoomCoroutine;
+    public bool allowInteraction=true;
 
     protected virtual void Start()
     {
         InitializeRoom();
     }
 
-    private void InitializeRoom()
+    protected virtual void InitializeRoom()
     {
         // 显示房间背景
         Load_room_scene();
@@ -70,10 +70,14 @@ public abstract class Room : MonoBehaviour
     public virtual void OnObjectClicked(InteractableObject objData)
     {
         Debug.Log($"Clicked on {objData.objectName}");
+        if (!allowInteraction)
+        {
+            Debug.Log("Interaction is disabled for this room.");
+            return;
+        }
         Interact(objData.objectName);        
     }
 
-    // 抽象方法：由子类实现具体交互逻辑
     protected abstract void Interact(string objectName);
 }
 

@@ -11,10 +11,7 @@ public class Map : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GameObject panel;
     [SerializeField] private TextMeshProUGUI info;    
-    [SerializeField] private Image marker;
-    
-
-
+    [SerializeField] private Image marker; 
     [SerializeField] private Button[] roomButtons;
     
     private int currentRoomIndex; 
@@ -63,18 +60,20 @@ public class Map : MonoBehaviour
     private void Display_map()
     {
         panel.SetActive(true);
-        GameManager.Instance.Pause_game();
+        //GameManager.Instance.Pause_game();
         currentRoomIndex=Player.Instance.currentRoomIndex;
         currentRoomPos = RoomManager.Instance.Get_room_position(currentRoomIndex);
         marker.GetComponent<RectTransform>().anchoredPosition = currentRoomPos;  // display the marker on the map
+        RoomManager.Instance.DisableRoomInteraction();
     }
 
 
     private void Close_map()
     {
-        GameManager.Instance.Resume_game();
+       // GameManager.Instance.Resume_game();
         info.text = ""; // Clear the info text when closing the map
         panel.SetActive(false);
+        RoomManager.Instance.EnableRoomInteraction(); // Disable interaction when map is closed
     }
 
 

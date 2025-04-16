@@ -9,6 +9,7 @@ public class Clickable : MonoBehaviour
     private Room parentRoom;
     private InteractableObject objData;
     private SpriteRenderer sr;
+    private bool allowInteraction;
 
     public void Initialize(Room room, InteractableObject data)
     {
@@ -17,18 +18,26 @@ public class Clickable : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
+    private void Update()
+    {
+       allowInteraction = parentRoom.allowInteraction;
+    }
+
     public void OnMouseDown()
     {
+        if (!allowInteraction) return; // 如果不允许交互，直接返回
         parentRoom.OnObjectClicked(objData);
     }
 
     private void OnMouseEnter()
     {
+        if (!allowInteraction) return; // 如果不允许交互，直接返回
         sr.sprite = objData.highlightedSprite;
     }
 
     private void OnMouseExit()
     {
+        if (!allowInteraction) return; // 如果不允许交互，直接返回
         sr.sprite = objData.normalSprite;
     }
 }

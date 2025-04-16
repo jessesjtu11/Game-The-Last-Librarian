@@ -31,6 +31,13 @@ public class Book : MonoBehaviour
         
     }
 
+    public void Initialize(string name, string desc, SkillType skillType)
+    {
+        bookName = name;
+        bookDescription = desc;
+        skill = skillType;
+    }
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.E) && infoCanvas.gameObject.activeSelf)
@@ -54,6 +61,7 @@ public class Book : MonoBehaviour
         // GameManager.Instance.PauseGame();
         
         // display the info of the book
+        Debug.Log($"Displaying book: {bookName}");
         infoCanvas.gameObject.SetActive(true);
         description.gameObject.SetActive(true);
         burnButton.gameObject.SetActive(true);

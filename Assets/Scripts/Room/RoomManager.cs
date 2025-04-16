@@ -12,8 +12,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private Vector2Int[] allRoomPos;
     [SerializeField] private int[][] allRoomSteps; 
     [SerializeField] private List<int> visibleRoomIndex; 
-
-    [SerializeField] private Room[] allRooms;
+    [SerializeField] public Room[] allRooms;
 
     private void Awake()
     {
@@ -55,7 +54,6 @@ public class RoomManager : MonoBehaviour
 
     }
 
-
     public Vector2Int Get_room_position(int roomIndex)
     {
         return allRoomPos[roomIndex-1];
@@ -68,9 +66,30 @@ public class RoomManager : MonoBehaviour
 
     public void Go_to_Room(int roomIndex)  //要完成时间减少……
     {
-        allRooms[roomIndex-1].Load_room_scene();
-        allRooms[Player.Instance.currentRoomIndex-1].Unload_room_scene(); 
-        Player.Instance.currentRoomIndex = roomIndex; //更新玩家当前房间索引
-        Debug.Log("Player moved to room index: " + roomIndex);
+        if (roomIndex < 1 || roomIndex > allRooms.Length)
+        {
+            Debug.LogError($"Invalid room index: {roomIndex}");
+            return;
+        }
+
+        allRooms[roomIndex - 1].gameObject.SetActive(true);
+        allRooms[Player.Instance.currentRoomIndex - 1].gameObject.SetActive(false);  //切换房间
+        Player.Instance.currentRoomIndex = roomIndex;
+        Debug.Log($"Player moved to Room {roomIndex}");
+    }
+
+    
+    public void EnableRoomInteraction(){
+        foreach (var room in allRooms)
+        {
+            room.allowInteraction = true; //允许交互
+        }
+    }
+
+    public void DisableRoomInteraction(){
+        foreach (var room in allRooms)
+        {
+            room.allowInteraction = false; //禁止交互
+        }
     }
 }
