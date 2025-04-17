@@ -997,8 +997,8 @@ MonoBehaviour:
   bookName: hello,world
   bookDescription: A book about code
   skill: 0
-  burnHeatValue: 10
-  readTimeCost: 30
+  burnHeatValue: 2
+  readTimeCost: 3
   infoCanvas: {fileID: 793237250125800189}
   description: {fileID: 5287132108530447344}
   burnButton: {fileID: 9103320539427822172}

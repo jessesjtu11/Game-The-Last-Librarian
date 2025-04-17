@@ -23,6 +23,7 @@ public class ReadingRoom : Room
 
     protected override void Interact(string objectName)
     {
+        GameManager.Instance.Pause_game();
         if (objectName == "BookShelf" && bookShelfPrefab != null)
         {
             bookShelfPrefab.SetActive(true);

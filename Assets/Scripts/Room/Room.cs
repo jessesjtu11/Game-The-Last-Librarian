@@ -69,6 +69,10 @@ public abstract class Room : MonoBehaviour
 
     public virtual void OnObjectClicked(InteractableObject objData)
     {
+        if( GameManager.Instance.isPaused )
+        {
+            return;
+        }
         Debug.Log($"Clicked on {objData.objectName}");
         if (!allowInteraction)
         {

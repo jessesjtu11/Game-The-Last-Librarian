@@ -6,10 +6,10 @@ public class Book : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] public string bookName;
-    [SerializeField] private string bookDescription;
-    [SerializeField] private SkillType skill;
-    [SerializeField] private float burnHeatValue = 10f;
-    [SerializeField] private float readTimeCost = 30f;
+    [SerializeField] public string bookDescription;
+    [SerializeField] public SkillType skill;
+    [SerializeField] private float burnHeatValue = 0.1f;
+    [SerializeField] private float readTimeCost = 0.3f;
 
     [Header("UI")]
     [SerializeField] private Canvas infoCanvas;
@@ -81,6 +81,8 @@ public class Book : MonoBehaviour
         isBurned = true;
         HasDecision = true;
         IsAvailable = false;
+
+        Player.Instance.ModifyTemperature(burnHeatValue); 
         
         ClosePanel();
         Debug.Log("Burning the book...");
@@ -96,6 +98,8 @@ public class Book : MonoBehaviour
         isRead = true;
         HasDecision = true;
         IsAvailable = false;
+
+        Player.Instance.ModifyTemperature(-readTimeCost); // 体温下降
 
         ClosePanel();
         Debug.Log("Reading the book...");

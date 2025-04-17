@@ -60,7 +60,7 @@ public class Map : MonoBehaviour
     private void Display_map()
     {
         panel.SetActive(true);
-        //GameManager.Instance.Pause_game();
+        GameManager.Instance.Pause_game();
         currentRoomIndex=Player.Instance.currentRoomIndex;
         currentRoomPos = RoomManager.Instance.Get_room_position(currentRoomIndex);
         marker.GetComponent<RectTransform>().anchoredPosition = currentRoomPos;  // display the marker on the map
@@ -70,7 +70,7 @@ public class Map : MonoBehaviour
 
     private void Close_map()
     {
-       // GameManager.Instance.Resume_game();
+        GameManager.Instance.Resume_game();
         info.text = ""; // Clear the info text when closing the map
         panel.SetActive(false);
         RoomManager.Instance.EnableRoomInteraction(); // Disable interaction when map is closed

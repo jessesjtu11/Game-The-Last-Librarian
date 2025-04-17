@@ -40,8 +40,10 @@ public class BookShelf : MonoBehaviour
         {
             if(isUIOpen)
                 CloseBookList();
-            else
+            else{
                 gameObject.SetActive(false); 
+                GameManager.Instance.Resume_game();
+            }
         }
     }
 
@@ -83,7 +85,6 @@ public class BookShelf : MonoBehaviour
     {   isUIOpen = true;
         isProcessBook = true;
         bookListPanel.SetActive(true);
-        //GameManager.Instance.PauseGame();
         UpdateBookDisplay();
     }
 
@@ -92,7 +93,6 @@ public class BookShelf : MonoBehaviour
         isUIOpen = false;
         isProcessBook = false;
         bookListPanel.SetActive(false);
-        //GameManager.Instance.ResumeGame();
     }
 
     private void UpdateBookDisplay()
