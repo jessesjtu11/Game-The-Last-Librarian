@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+
     #region 体温管理
     public void ModifyTemperature(float amount)
     {
@@ -100,7 +101,7 @@ public class Player : MonoBehaviour
 
 
     // 数据持久化部分修改
-    private void SavePlayerState()
+    public void SavePlayerState()
     {
         // 移除了技能保存
         PlayerPrefs.SetFloat("BodyTemperature", currentBodyTemp);
@@ -110,7 +111,7 @@ public class Player : MonoBehaviour
        // PlayerPrefs.SetString("BookBag", bookNames);
     }
 
-    private void LoadPlayerState()
+    public void LoadPlayerState()
     {
         currentBodyTemp = PlayerPrefs.GetFloat("BodyTemperature", baseBodyTemp);
         currentRoomIndex = PlayerPrefs.GetInt("CurrentRoom", 1);
@@ -122,6 +123,13 @@ public class Player : MonoBehaviour
             if (book != null) AddBook(book);
             
         } */
+    }
+
+    public void ResetPlayerState()
+    {
+        currentBodyTemp = baseBodyTemp;
+        currentRoomIndex = 1; // 重置为起始房间
+        SavePlayerState();
     }
 }
 

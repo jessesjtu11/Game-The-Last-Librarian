@@ -426,7 +426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.00003796816, y: 0.000034061744}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4863322665162007840
@@ -856,10 +856,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  bookListPanel: {fileID: 7735776271053718668}
+  bookListPanel: {fileID: 3137794264905373201}
   bookButtonPrefab: {fileID: 6783629800272716939, guid: 7a48f058f02a4db43999513e081aae97, type: 3}
   contentParent: {fileID: 6334865584188745519}
   buttonSpacing: 10
+  pauseMenuPanel: {fileID: 0}
+  timeScale: 2
+  allowInteraction: 1
 --- !u!1 &4971241139675353352
 GameObject:
   m_ObjectHideFlags: 0

@@ -926,7 +926,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ad700e96313684f43a61fdcb8cd1b6c5, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -934,7 +934,7 @@ SpriteRenderer:
   m_Size: {x: 10.29, y: 12.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &2267261037697488638
@@ -999,6 +999,8 @@ MonoBehaviour:
   skill: 0
   burnHeatValue: 2
   readTimeCost: 3
+  readCost: 10
+  burnCost: 20
   infoCanvas: {fileID: 793237250125800189}
   description: {fileID: 5287132108530447344}
   burnButton: {fileID: 9103320539427822172}

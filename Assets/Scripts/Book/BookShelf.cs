@@ -15,6 +15,9 @@ public class BookShelf : MonoBehaviour
     [SerializeField] private Transform contentParent;
     [SerializeField] private float buttonSpacing = 10f;
 
+    [Header("basic settings")]
+    [SerializeField] private float timeScale = 2f; // 时间流逝速度倍率
+
     private VerticalLayoutGroup layoutGroup;
     private bool isUIOpen = false;
     private bool isProcessBook = false;
@@ -42,7 +45,6 @@ public class BookShelf : MonoBehaviour
                 CloseBookList();
             else{
                 gameObject.SetActive(false); 
-                GameManager.Instance.Resume_game();
             }
         }
     }
@@ -69,6 +71,8 @@ public class BookShelf : MonoBehaviour
 
     public void OnMouseDown()   //应该要改成点击shelf
     {
+        if(GameManager.Instance.pauseMenuPanel.activeInHierarchy ) return; // 如果不允许交互，则直接返回
+
         Debug.Log("书架被点击了");
         if (isUIOpen && !isProcessBook)
         {
@@ -86,6 +90,8 @@ public class BookShelf : MonoBehaviour
         isProcessBook = true;
         bookListPanel.SetActive(true);
         UpdateBookDisplay();
+        TimeManager.Instance.SetTimeScale(timeScale); // 设置时间流逝速度
+        Debug.Log("书籍列表已显示");
     }
 
     private void CloseBookList()
@@ -93,6 +99,7 @@ public class BookShelf : MonoBehaviour
         isUIOpen = false;
         isProcessBook = false;
         bookListPanel.SetActive(false);
+        TimeManager.Instance.SetTimeScale(1f); // 恢复时间流逝速度
     }
 
     private void UpdateBookDisplay()
@@ -178,6 +185,5 @@ public class BookShelf : MonoBehaviour
             UpdateBookDisplay();
         }
     }
-
 
 }

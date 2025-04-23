@@ -17,7 +17,7 @@ public class PlayerStatusUI : MonoBehaviour
 
     private void Start()
     {
-        // 初始化状态栏
+         LeanTween.init(800); 
         temperatureBar.minValue = Player.Instance.minBodyTemp;
         temperatureBar.maxValue = Player.Instance.maxBodyTemp;
         
@@ -30,12 +30,14 @@ public class PlayerStatusUI : MonoBehaviour
 
     private void Update()
     {
-            UpdateTemperatureDisplay();
+        UpdateTemperatureDisplay();        
     }
 
     private void UpdateTemperatureDisplay()
     {
         float currentTemp = Player.Instance.currentBodyTemp;
+
+        if(temperatureBar.value == currentTemp) return; // 如果当前值和目标值相同，则不更新
         
         // 平滑过渡动画
         LeanTween.value(gameObject, temperatureBar.value, currentTemp, 0.5f)
@@ -62,6 +64,7 @@ public class PlayerStatusUI : MonoBehaviour
         {
             Player.Instance.OnTemperatureChanged -= UpdateTemperatureDisplay;
         }
+        LeanTween.cancel(gameObject); // 取消所有动画
     }
 
 }

@@ -46,34 +46,32 @@ public class Map : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M) && !panel.activeSelf){
             Debug.Log("M key pressed, displaying map...");
-            Display_map();
+            DisplayMap();
         }
         
             
         if (Input.GetKeyDown(KeyCode.E) && panel.activeSelf){
             Debug.Log("E key pressed, closing map...");
-            Close_map();
+            CloseMap();
         }
             
     }
 
-    private void Display_map()
+    private void DisplayMap()
     {
         panel.SetActive(true);
-        GameManager.Instance.Pause_game();
+        GameManager.Instance.PauseGame();
         currentRoomIndex=Player.Instance.currentRoomIndex;
         currentRoomPos = RoomManager.Instance.Get_room_position(currentRoomIndex);
-        marker.GetComponent<RectTransform>().anchoredPosition = currentRoomPos;  // display the marker on the map
-        RoomManager.Instance.DisableRoomInteraction();
+        marker.GetComponent<RectTransform>().anchoredPosition = currentRoomPos;  // display the marker on the maps
     }
 
 
-    private void Close_map()
+    private void CloseMap()
     {
-        GameManager.Instance.Resume_game();
+        GameManager.Instance.ResumeGame();
         info.text = ""; // Clear the info text when closing the map
         panel.SetActive(false);
-        RoomManager.Instance.EnableRoomInteraction(); // Disable interaction when map is closed
     }
 
 
@@ -93,7 +91,7 @@ public class Map : MonoBehaviour
     {
         if (selectedRoomIndex == currentRoomIndex) return;
         RoomManager.Instance.Go_to_Room(selectedRoomIndex);  
-        Close_map();
+        CloseMap();
     }
 
 

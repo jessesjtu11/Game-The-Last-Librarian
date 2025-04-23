@@ -10,6 +10,8 @@ public class Book : MonoBehaviour
     [SerializeField] public SkillType skill;
     [SerializeField] private float burnHeatValue = 0.1f;
     [SerializeField] private float readTimeCost = 0.3f;
+    [SerializeField] private float readCost = 10f;
+    [SerializeField] private float burnCost = 20f;
 
     [Header("UI")]
     [SerializeField] private Canvas infoCanvas;
@@ -56,10 +58,7 @@ public class Book : MonoBehaviour
 
 
     public void Display()
-    {
-        // pause the game
-        // GameManager.Instance.PauseGame();
-        
+    {        
         // display the info of the book
         Debug.Log($"Displaying book: {bookName}");
         infoCanvas.gameObject.SetActive(true);
@@ -74,15 +73,13 @@ public class Book : MonoBehaviour
     {
         if (!isInteractable) return;
 
-        // update Heat & Time
-        //SurvivalSystem.Instance.AddHeat(burnHeatValue);
-       // TimeManager.Instance.AddTime(10f); 
         isInteractable = false;
         isBurned = true;
         HasDecision = true;
         IsAvailable = false;
 
         Player.Instance.ModifyTemperature(burnHeatValue); 
+        TimeManager.Instance.AddTime(burnCost); // 10秒的时间流逝
         
         ClosePanel();
         Debug.Log("Burning the book...");
@@ -92,7 +89,6 @@ public class Book : MonoBehaviour
     {
         if (!isInteractable) return;
 
-      //  TimeManager.Instance.SpendTime(readTimeCost);
       //  SkillSystem.Instance.AcquireSkill(skill);
         isInteractable = false;
         isRead = true;
@@ -100,6 +96,7 @@ public class Book : MonoBehaviour
         IsAvailable = false;
 
         Player.Instance.ModifyTemperature(-readTimeCost); // 体温下降
+        TimeManager.Instance.AddTime(readCost); // 10秒的时间流逝
 
         ClosePanel();
         Debug.Log("Reading the book...");
@@ -109,7 +106,6 @@ public class Book : MonoBehaviour
     private void ClosePanel()
     {
         infoCanvas.gameObject.SetActive(false);
-        //GameManager.Instance.ResumeGame();
     }
 
 
