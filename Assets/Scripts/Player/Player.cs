@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
 
     #region 事件系统
     public delegate void PlayerStateUpdate();
+    public event PlayerStateUpdate OnTemperatureTooLow;
     public event PlayerStateUpdate OnTemperatureChanged;
     public event PlayerStateUpdate OnInventoryUpdated;
    // public event PlayerStateUpdate OnSkillUnlocked;
@@ -59,18 +60,15 @@ public class Player : MonoBehaviour
     {
         currentBodyTemp += amount;
         CheckTemperatureEffects(); // 检查体温状态效果
+        OnTemperatureChanged?.Invoke(); // 触发体温变化事件
     }
 
     private void CheckTemperatureEffects()
     {
-        // 根据体温触发不同状态效果
-        if (currentBodyTemp >= 39f)
+        if (currentBodyTemp <= 30f)
         {
-            Debug.LogWarning("进入高热状态！");
-        }
-        else if (currentBodyTemp <= 35f)
-        {
-            Debug.LogWarning("进入低温症状态！");
+            Debug.LogWarning("体温过低！");
+            OnTemperatureTooLow?.Invoke(); // 触发体温变化事件
         }
     }
     #endregion
@@ -103,7 +101,6 @@ public class Player : MonoBehaviour
     // 数据持久化部分修改
     public void SavePlayerState()
     {
-        // 移除了技能保存
         PlayerPrefs.SetFloat("BodyTemperature", currentBodyTemp);
         PlayerPrefs.SetInt("CurrentRoom", currentRoomIndex);
         
@@ -115,6 +112,7 @@ public class Player : MonoBehaviour
     {
         currentBodyTemp = PlayerPrefs.GetFloat("BodyTemperature", baseBodyTemp);
         currentRoomIndex = PlayerPrefs.GetInt("CurrentRoom", 1);
+        OnTemperatureChanged?.Invoke();
 
         /*string[] bookNames = PlayerPrefs.GetString("BookBag").Split(',');
         foreach(string name in bookNames)

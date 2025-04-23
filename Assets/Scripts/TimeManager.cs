@@ -16,9 +16,8 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private RectTransform clockPointer;
     [SerializeField] private TextMeshProUGUI daysCounterText;
 
-    private int elapsedDays;
-    private float rotationProgress; // 0-1表示当日进度
-    private bool isPaused;
+    public int elapsedDays;
+    private float rotationProgress; // 0-1表示当日进度\
 
 
     private void Awake()
@@ -42,11 +41,10 @@ public class TimeManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isPaused)
-        {
+       
             UpdateTimeProgress();
             UpdateClockVisual();
-        }
+        
     }
 
     private void UpdateTimeProgress()
@@ -111,8 +109,6 @@ public class TimeManager : MonoBehaviour
 
         
     } 
-
-    public void SetPauseState(bool paused) => isPaused = paused;
 
     #region 数据持久化
     public void SaveTimeData()

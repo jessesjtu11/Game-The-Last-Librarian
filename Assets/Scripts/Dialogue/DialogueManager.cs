@@ -3,10 +3,12 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 
 public class DialogueController : MonoBehaviour
 {
+    public static DialogueController Instance { get; private set; }
     [Header("UI Components")]
     [SerializeField] private Image backgroundImage;
     [SerializeField] private TextMeshProUGUI dialogueText;
@@ -25,6 +27,15 @@ public class DialogueController : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         audioSource = GetComponent<AudioSource>();
         dialogueBox.alpha = 0;
         backgroundImage.color = Color.clear;
@@ -77,6 +88,7 @@ public class DialogueController : MonoBehaviour
         
         // 后续事件触发（比如场景切换）...
         Debug.Log("剧情动画结束");
+        StartCoroutine(GameManager.Instance.LoadGameScene("Game",false));
     }
 
     private IEnumerator TypeText(DialogueData.DialogueSegment segment)
@@ -85,7 +97,7 @@ public class DialogueController : MonoBehaviour
         dialogueText.text = "";
         string originalText = segment.dialogueText;
         int currentChar = 0;
-        bool isRichText = false;
+        //bool isRichText = false;
 
         while (currentChar < originalText.Length)
         {

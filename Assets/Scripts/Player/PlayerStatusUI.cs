@@ -22,15 +22,10 @@ public class PlayerStatusUI : MonoBehaviour
         temperatureBar.maxValue = Player.Instance.maxBodyTemp;
         
         // 注册体温更新事件
-       // Player.Instance.OnTemperatureChanged += UpdateTemperatureDisplay;
+        Player.Instance.OnTemperatureChanged += UpdateTemperatureDisplay;
         
         // 初始更新
         UpdateTemperatureDisplay();
-    }
-
-    private void Update()
-    {
-        UpdateTemperatureDisplay();        
     }
 
     private void UpdateTemperatureDisplay()

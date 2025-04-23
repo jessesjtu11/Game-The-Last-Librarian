@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     [Header("游戏设置")]
     [SerializeField] private string mainMenuScene = "MainMenu";
-    [SerializeField] private string firstLevelScene = "Game";
+    [SerializeField] private string firstLevelScene = "Dialogue";
     
     [Header("存档设置")]
     [SerializeField, Tooltip("自动保存间隔（秒）")] 
@@ -40,12 +40,16 @@ public class GameManager : MonoBehaviour
         
     [Header("菜单UI")]
     [SerializeField] private GameObject mainMenuPanel;
-    [SerializeField] public GameObject pauseMenuPanel;
-   
+    [SerializeField] public GameObject pauseMenuPanel;   
     [SerializeField] private GameObject timeManagerPanel;
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private TextMeshProUGUI recordText;
+    [SerializeField] private TextMeshProUGUI survivalDaysText;
+    [SerializeField] private Button continueButton;
 
     [Header("过渡效果")] 
     [SerializeField] private float menuFadeDuration = 0.5f;
+    [SerializeField] private float gameOverDelay = 1.5f;
 
     private Stack<GameObject> _activeMenuStack = new Stack<GameObject>();
     private bool _isTransitioning;
@@ -77,6 +81,15 @@ public class GameManager : MonoBehaviour
     {
         InitMenuSystem();
         if (CurrentState == GameState.PreGame) ShowMainMenu();
+        Player.Instance.OnTemperatureTooLow += HandleTemperatureTooLow;
+        if (PlayerPrefs.HasKey("HasValidSave"))
+        {
+            continueButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            continueButton.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
@@ -89,12 +102,15 @@ public class GameManager : MonoBehaviour
         // 初始隐藏所有菜单
         SetMenuActive(mainMenuPanel, false);
         SetMenuActive(pauseMenuPanel, false);
+        SetMenuActive(gameOverPanel, false);
     }
 
     private void ShowMainMenu()
     {
         if (CurrentState != GameState.PreGame) return;
         StartCoroutine(TransitionMenu(mainMenuPanel)); 
+        if (PlayerPrefs.HasKey("DaysRecord"))
+            recordText.text = "Days Record: " + PlayerPrefs.GetInt("DaysRecord", 0).ToString() + " days";
     }
 
 
@@ -107,6 +123,8 @@ public class GameManager : MonoBehaviour
         CurrentState = GameState.Playing;
         StartAutoSave();
         CloseTopMenu();
+        TimeManager.Instance.timeScale = 0f;
+        PlayerPrefs.SetInt("HasValidSave", 1); // 设置存档标记
     }
 
     public void RestartGame()
@@ -258,7 +276,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region 场景管理
-    private IEnumerator LoadGameScene(string sceneName, bool loadSaveData)
+    public IEnumerator LoadGameScene(string sceneName, bool loadSaveData)
     {
         // 显示加载界面
         yield return ScreenFader.Instance.FadeOut(1f);
@@ -274,10 +292,13 @@ public class GameManager : MonoBehaviour
         {
             LoadGameData();
         }
+        Debug.Log("Game loaded successfully.");
 
         if (sceneName == "Game"){
             timeManagerPanel.SetActive(true);
+            Debug.Log(Player.Instance.currentRoomIndex);
             RoomManager.Instance.allRooms[Player.Instance.currentRoomIndex - 1].gameObject.SetActive(true); //激活当前房间
+            TimeManager.Instance.timeScale = 1f; // 恢复时间流逝
         }
 
         yield return ScreenFader.Instance.FadeIn(1f);
@@ -289,6 +310,42 @@ public class GameManager : MonoBehaviour
         Player.Instance.LoadPlayerState();
         OnGameLoaded?.Invoke();
     }
+    #endregion
+
+    #region GameOver逻辑
+    private void HandleTemperatureTooLow()
+    {
+        StartCoroutine(TriggerGameOver());        
+    }
+
+    private IEnumerator TriggerGameOver()
+    {
+        CurrentState = GameState.GameOver;
+        yield return new WaitForSecondsRealtime(gameOverDelay);
+       
+        Time.timeScale = 0f;        
+        SetMenuActive(gameOverPanel, true);
+        SaveFinalStats();
+        PlayerPrefs.DeleteKey("HasValidSave");
+    }
+
+
+    private void SaveFinalStats()
+    {
+        int survivalDays = TimeManager.Instance.elapsedDays;
+        survivalDaysText.text = "Survival Days: " + survivalDays.ToString() + " days";
+        if(!PlayerPrefs.HasKey("DaysRecord"))
+        {
+            PlayerPrefs.SetInt("DaysRecord", survivalDays);
+        }
+        else if (survivalDays > PlayerPrefs.GetInt("DaysRecord", 0))
+        {
+            PlayerPrefs.SetInt("DaysRecord", survivalDays);
+        }
+        PlayerPrefs.Save();
+    }
+
+
     #endregion
 
 
