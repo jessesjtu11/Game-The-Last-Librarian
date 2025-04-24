@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f4210ae7abee894eba4e8537419a842, type: 3}
-  m_Name: 1 1
+  m_Script: {fileID: 11500000, guid: 6500de8e2161b2841948c34d664a73ca, type: 3}
+  m_Name: 1 2
   m_EditorClassIdentifier: 
-  bookID: 1
-  bookName: B
-  description: bbbbbbbbbb
-  spawnProbability: 25
-  burnHeatValue: 0.1
-  readHeatCost: 0.3
-  readTimeCost: 10
-  burnTimeCost: 20
+  skillID: 2
+  skillName: 3
+  description: 3333
+  familarityLevel: 0
+  duration: 0
+  effect: {fileID: 11400000, guid: 7d04533d6e46a064594da5a621b0294b, type: 2}

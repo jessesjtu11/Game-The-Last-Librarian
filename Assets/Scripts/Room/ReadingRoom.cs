@@ -101,11 +101,7 @@ public class ReadingRoom : Room
     Book newBook = bookObj.GetComponent<Book>();
     if (newBook != null)
     {
-        newBook.Initialize(
-            config.bookName,
-            config.description,
-            config.associatedSkill
-        );
+        newBook.Initialize(config);
         
         currentBooks.Add(newBook);
     }

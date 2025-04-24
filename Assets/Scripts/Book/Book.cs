@@ -5,13 +5,13 @@ using TMPro;
 public class Book : MonoBehaviour
 {
     [Header("Settings")]
+    [SerializeField] public int bookID;
     [SerializeField] public string bookName;
     [SerializeField] public string bookDescription;
-    [SerializeField] public SkillType skill;
     [SerializeField] private float burnHeatValue = 0.1f;
-    [SerializeField] private float readTimeCost = 0.3f;
-    [SerializeField] private float readCost = 10f;
-    [SerializeField] private float burnCost = 20f;
+    [SerializeField] private float readHeatCost = 0.3f;
+    [SerializeField] private float readTimeCost = 10f;
+    [SerializeField] private float burnTimeCost = 20f;
 
     [Header("UI")]
     [SerializeField] private Canvas infoCanvas;
@@ -33,11 +33,15 @@ public class Book : MonoBehaviour
         
     }
 
-    public void Initialize(string name, string desc, SkillType skillType)
+    public void Initialize(BookConfig config)
     {
-        bookName = name;
-        bookDescription = desc;
-        skill = skillType;
+        bookID = config.bookID;
+        bookName = config.bookName;
+        bookDescription = config.description;
+        burnHeatValue = config.burnHeatValue;
+        readHeatCost = config.readHeatCost;
+        readTimeCost = config.readTimeCost;
+        burnTimeCost = config.burnTimeCost;
     }
 
     private void Update()
@@ -59,7 +63,6 @@ public class Book : MonoBehaviour
 
     public void Display()
     {        
-        // display the info of the book
         Debug.Log($"Displaying book: {bookName}");
         infoCanvas.gameObject.SetActive(true);
         description.gameObject.SetActive(true);
@@ -79,7 +82,7 @@ public class Book : MonoBehaviour
         IsAvailable = false;
 
         Player.Instance.ModifyTemperature(burnHeatValue); 
-        TimeManager.Instance.AddTime(burnCost); // 10秒的时间流逝
+        TimeManager.Instance.AddTime(burnTimeCost); // 10秒的时间流逝
         
         ClosePanel();
         Debug.Log("Burning the book...");
@@ -88,15 +91,14 @@ public class Book : MonoBehaviour
     public void OnReadSelected()
     {
         if (!isInteractable) return;
-
-      //  SkillSystem.Instance.AcquireSkill(skill);
         isInteractable = false;
         isRead = true;
         HasDecision = true;
         IsAvailable = false;
 
-        Player.Instance.ModifyTemperature(-readTimeCost); // 体温下降
-        TimeManager.Instance.AddTime(readCost); // 10秒的时间流逝
+        Player.Instance.ModifyTemperature(-readHeatCost); // 体温下降
+        TimeManager.Instance.AddTime(readTimeCost); // 10秒的时间流逝
+        SkillSystem.Instance.AcquireSkillFromBook(bookID); // 学习技能
 
         ClosePanel();
         Debug.Log("Reading the book...");
@@ -125,7 +127,7 @@ public enum SkillType
     {
         // 显示当前技能效果
         skillDescription.text = $"可获得技能: {GetSkillDescription(skill)}\n"
-                               + $"阅读需要时间: {readTimeCost}秒\n"
+                               + $"阅读需要时间: {readHeatCost}秒\n"
                                + $"燃烧可获得热量: {burnHeatValue}单位";
     }
 

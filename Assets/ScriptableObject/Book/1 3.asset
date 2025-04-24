@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f4210ae7abee894eba4e8537419a842, type: 3}
   m_Name: 1 3
   m_EditorClassIdentifier: 
+  bookID: 3
   bookName: D
   description: ddddddddddddddd
   spawnProbability: 10
-  associatedSkill: 0
+  burnHeatValue: 0.1
+  readHeatCost: 0.3
+  readTimeCost: 10
+  burnTimeCost: 20
