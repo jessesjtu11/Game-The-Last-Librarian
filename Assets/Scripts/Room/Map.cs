@@ -64,6 +64,7 @@ public class Map : MonoBehaviour
         currentRoomIndex=Player.Instance.currentRoomIndex;
         currentRoomPos = RoomManager.Instance.Get_room_position(currentRoomIndex);
         marker.GetComponent<RectTransform>().anchoredPosition = currentRoomPos;  // display the marker on the maps
+        HelperUI.Instance.ShowMapCloseUI(); // Show the close UI
     }
 
 
@@ -72,12 +73,13 @@ public class Map : MonoBehaviour
         GameManager.Instance.ResumeGame();
         info.text = ""; // Clear the info text when closing the map
         panel.SetActive(false);
+        HelperUI.Instance.ShowMapOpenUI(); // Show the open UI
     }
 
 
     public void OnRoomButtonClicked(int roomIndex){               
         int steps = RoomManager.Instance.Calculate_Steps(currentRoomIndex, roomIndex);
-        info.text = $"It will take {steps} steps to get there.";
+        info.text = $"到达该房间需要 {steps} 步。";
         selectedRoomIndex = roomIndex;
     }
 

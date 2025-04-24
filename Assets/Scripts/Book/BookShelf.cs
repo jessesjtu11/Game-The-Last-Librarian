@@ -45,6 +45,7 @@ public class BookShelf : MonoBehaviour
                 CloseBookList();
             else{
                 gameObject.SetActive(false); 
+                HelperUI.Instance.HideInteractionUI(); // 隐藏交互提示UI
             }
         }
     }

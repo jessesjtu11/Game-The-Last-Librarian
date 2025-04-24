@@ -240,10 +240,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Book List
+  m_text: "\u4E66\u672C\u6E05\u5355"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ee2d9e09de456634b8527403fe5e6915, type: 2}
+  m_sharedMaterial: {fileID: 206723070308979520, guid: ee2d9e09de456634b8527403fe5e6915, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -860,9 +860,7 @@ MonoBehaviour:
   bookButtonPrefab: {fileID: 6783629800272716939, guid: 7a48f058f02a4db43999513e081aae97, type: 3}
   contentParent: {fileID: 6334865584188745519}
   buttonSpacing: 10
-  pauseMenuPanel: {fileID: 0}
   timeScale: 2
-  allowInteraction: 1
 --- !u!1 &4971241139675353352
 GameObject:
   m_ObjectHideFlags: 0

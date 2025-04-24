@@ -26,7 +26,7 @@ public class Clickable : MonoBehaviour
     public void OnMouseDown()
     {
         if (!allowInteraction) return; // 如果不允许交互，直接返回
-        parentRoom.OnObjectClicked(objData);
+        parentRoom.OnObjectClicked(objData);        
     }
 
     private void OnMouseEnter()

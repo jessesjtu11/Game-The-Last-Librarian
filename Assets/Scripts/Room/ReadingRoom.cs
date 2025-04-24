@@ -26,6 +26,7 @@ public class ReadingRoom : Room
         if (objectName == "BookShelf" && bookShelfPrefab != null)
         {
             bookShelfPrefab.SetActive(true);
+            HelperUI.Instance.ShowInteractionUI();
         }
     }
 

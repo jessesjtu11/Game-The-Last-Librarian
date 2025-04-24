@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
         if (CurrentState != GameState.PreGame) return;
         StartCoroutine(TransitionMenu(mainMenuPanel)); 
         if (PlayerPrefs.HasKey("DaysRecord"))
-            recordText.text = "Days Record: " + PlayerPrefs.GetInt("DaysRecord", 0).ToString() + " days";
+            recordText.text = "最长存活记录: " + PlayerPrefs.GetInt("DaysRecord", 0).ToString() + " 天";
     }
 
 

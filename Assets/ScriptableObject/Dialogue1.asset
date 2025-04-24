@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueSegments:
   - backgroundImage: {fileID: 21300000, guid: 77ab16aaae291224c8f740c0fe8ee78c, type: 3}
-    dialogueText: The end of the world came.
+    dialogueText: "\u4E16\u754C\u672B\u65E5\u964D\u4E34\u3002"
     textSpeed: 0.1
   - backgroundImage: {fileID: 21300000, guid: df2790ecb8788b14197bbe655aed512f, type: 3}
-    dialogueText: The home of mankind  was destroyed.
+    dialogueText: "\u4EBA\u7C7B\u7684\u5BB6\u56ED\u88AB\u6467\u6BC1\u3002"
     textSpeed: 0.1
   - backgroundImage: {fileID: 21300000, guid: 0e7fd6aba03135840aee3cfa043cb648, type: 3}
-    dialogueText: An endlss winter followed.
+    dialogueText: "\u968F\u4E4B\u800C\u6765\u7684\u662F\u65E0\u5C3D\u7684\u5BD2\u51AC\u3002"
     textSpeed: 0.1
   - backgroundImage: {fileID: 21300000, guid: c8ce4ab839c402041b5f5810bb7731ba, type: 3}
-    dialogueText: You, a librarian, have to survive in the library.
+    dialogueText: "\u4F60\uFF0C\u4E00\u4E2A\u56FE\u4E66\u7BA1\u7406\u5458\uFF0C\u8981\u5728\u56FE\u4E66\u9986\u4E2D\u82DF\u4E0B\u53BB\u3002"
     textSpeed: 0.1

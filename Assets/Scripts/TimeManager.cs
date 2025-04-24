@@ -91,7 +91,7 @@ public class TimeManager : MonoBehaviour
 
     private void UpdateDaysCounter()
     {
-        daysCounterText.text = $"Yon've survived for {elapsedDays} days";
+        daysCounterText.text = $"你已存活了 {elapsedDays} 天";
         // 添加文本缩放动画
         LeanTween.scale(daysCounterText.gameObject, Vector3.one * 1.2f, 0.3f)
             .setEase(LeanTweenType.easeOutQuad)
