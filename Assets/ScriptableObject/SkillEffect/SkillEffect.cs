@@ -15,14 +15,3 @@ public abstract class SkillEffect : ScriptableObject, ISkillEffect
 }
 
 
-[CreateAssetMenu(menuName = "Skills/Effects/HealEffect")]
-public class HealEffect : SkillEffect
-{
-    [SerializeField] float healAmount;
-
-    public override void ApplyEffect( )
-    {
-        Player.Instance.currentBodyTemp += healAmount;
-    }
-}
-

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: 1
   skillName: 2
-  description: 2222
+  description: "\u4F53\u6E29\u56DE\u5347\uFF01"
   familarityLevel: 0
   duration: 0
-  effect: {fileID: 11400000, guid: 7d04533d6e46a064594da5a621b0294b, type: 2}
+  effect: {fileID: 11400000, guid: b8de18f7840c8594f907bc056a51d685, type: 2}
