@@ -10,7 +10,7 @@ public class Map : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private GameObject panel;
-    [SerializeField] private TextMeshProUGUI info;    
+    [SerializeField] private Text info;    
     [SerializeField] private Image marker; 
     [SerializeField] private Button[] roomButtons;
     
@@ -77,9 +77,16 @@ public class Map : MonoBehaviour
     }
 
 
-    public void OnRoomButtonClicked(int roomIndex){               
+    public void OnRoomButtonClicked(int roomIndex){         
+        if (roomIndex == currentRoomIndex) return; // Ignore if the same room is clicked      
         int steps = RoomManager.Instance.Calculate_Steps(currentRoomIndex, roomIndex);
-        info.text = $"到达该房间需要 {steps} 步。";
+        if (steps == 0) // If the room is not visible
+        {
+            info.text = "该房间尚未解锁。";
+            return;
+        }
+        else
+            info.text = $"到达该房间需要 {steps} 步。";
         selectedRoomIndex = roomIndex;
     }
 
@@ -92,8 +99,8 @@ public class Map : MonoBehaviour
     public void OnGoClicked()
     {
         if (selectedRoomIndex == currentRoomIndex) return;
-        RoomManager.Instance.Go_to_Room(selectedRoomIndex);  
-        CloseMap();
+        if( RoomManager.Instance.Go_to_Room(selectedRoomIndex) )
+            CloseMap();
     }
 
 

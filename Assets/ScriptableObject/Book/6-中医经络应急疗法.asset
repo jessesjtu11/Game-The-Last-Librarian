@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "6-\u4E2D\u533B\u7ECF\u7EDC\u5E94\u6025\u7597\u6CD5"
   m_EditorClassIdentifier: 
   bookID: 6
-  bookName: "\u4E2D\u533B\u7ECF\u7EDC\u5E94\u6025\u7597\u6CD5 "
+  bookName: "\u4E2D\u533B\u7ECF\u7EDC"
   description: "\u75DB\u4E3A\u706B\uFF0C\u8840\u4E3A\u6C34\uFF0C\u6309\u661F\u4F4D\u622A\u6D41\u3002\r\n"
   spawnProbability: 30
   burnHeatValue: 0.1

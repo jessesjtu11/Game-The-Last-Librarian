@@ -43,9 +43,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject pauseMenuPanel;   
     [SerializeField] private GameObject timeManagerPanel;
     [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] private TextMeshProUGUI recordText;
-    [SerializeField] private TextMeshProUGUI survivalDaysText;
+    [SerializeField] private Text recordText;
+    [SerializeField] private Text survivalDaysText;
     [SerializeField] private Button continueButton;
+    [SerializeField] private GameObject reminderPanel;
 
     [Header("过渡效果")] 
     [SerializeField] private float menuFadeDuration = 0.5f;
@@ -471,5 +472,15 @@ public class GameManager : MonoBehaviour
             menu.SetActive(active);
             if (active) menu.transform.SetAsLastSibling();
         }
+    }
+
+
+
+    public void OnReminderClicked(){
+        reminderPanel.SetActive(true);
+    }
+
+    public void OnReminderCloseClicked(){
+        reminderPanel.SetActive(false);
     }
 }

@@ -34,15 +34,19 @@ public class SkillSystem : MonoBehaviour
 
     public void AcquireSkillFromBook(int bookID)
     {
-        if (skillDatabase.TryGetSkillByBook(bookID, out SkillData data))
+        bool isBookHasSkill = skillDatabase.TryGetSkillByBook(bookID, out SkillData data);
+        if( isBookHasSkill)
         {
             ApplySkill(data);
             panel.SetActive(true);
             skillDescription.text = data.description;
             Invoke("ClosePanel", infoShowTime); // Close the panel after 5 seconds
         }
-        else 
-            Debug.Log($"Skill with book ID {bookID} not found in database.");
+        else {
+            panel.SetActive(true);
+            skillDescription.text = "你并没有获得任何技能。";
+            Invoke("ClosePanel", infoShowTime); // Close the panel after 5 seconds
+        }
     }
 
     private void ClosePanel()

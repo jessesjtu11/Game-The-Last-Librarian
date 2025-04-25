@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f4210ae7abee894eba4e8537419a842, type: 3}
+  m_Name: "10-\u767E\u5E74\u5B64\u72EC"
+  m_EditorClassIdentifier: 
+  bookID: 10
+  bookName: "\u767E\u5E74\u5B64\u72EC"
+  description: "\u5931\u7720\u75C7\u6700\u53EF\u6015\u4E4B\u5904\u4E0D\u5728\u4E8E\u8BA9\u4EBA\u6BEB\u65E0\u5026\u610F\u4E0D\u80FD\u5165\u7761\uFF0C\u800C\u662F\u4F1A\u4E0D\u53EF\u9006\u8F6C\u5730\u6076\u5316\u5230\u66F4\u4E25\u91CD\u7684\u5883\u5730\uFF1A\u9057\u5FD8\u3002\u4E5F\u5C31\u662F\u8BF4\uFF0C\u60A3\u8005\u6162\u6162\u4E60\u60EF\u4E86\u65E0\u7720\u7684\u72B6\u6001\uFF0C\u5C31\u5F00\u59CB\u6DE1\u5FD8\u7AE5\u5E74\u7684\u8BB0\u5FC6\uFF0C\u7EE7\u4E4B\u4EE5\u4E8B\u7269\u7684\u540D\u79F0\u548C\u6982\u5FF5\uFF0C\u6700\u540E\u662F\u5404\u4EBA\u7684\u8EAB\u4EFD\uFF0C\u4EE5\u81F3\u5931\u53BB\u81EA\u6211\uFF0C\u6CA6\u4E3A\u6CA1\u6709\u8FC7\u5F80\u7684\u767D\u75F4\u3002\r\n"
+  spawnProbability: 20
+  burnHeatValue: 0.1
+  readHeatCost: 0.3
+  readTimeCost: 10
+  burnTimeCost: 20

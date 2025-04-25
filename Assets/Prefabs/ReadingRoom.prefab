@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0065, y: 0.0152, z: 0}
-  m_LocalScale: {x: 0.75974214, y: 0.7734725, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.79, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6734791920066148222}
@@ -105,6 +105,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 10bd22969ed42a9468e8b8415a9f635b, type: 2}
   backgroundRenderer: {fileID: 6869310793983725685}
   interactiveObjectsContainer: {fileID: 6734791920066148222}
+  allowInteraction: 1
   possibleBooks:
   - {fileID: 11400000, guid: 365ce9a7e4832d7448b647a6740cde5b, type: 2}
   - {fileID: 11400000, guid: b94adc61caf02b7478855eadcfba5ae3, type: 2}

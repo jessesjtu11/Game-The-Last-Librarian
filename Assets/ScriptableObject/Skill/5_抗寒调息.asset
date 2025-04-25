@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillID: 5
   skillName: "\u6297\u5BD2\u8C03\u606F"
-  description: "\u5BD2\u51B7\u6761\u4E0B\u964D\u901F\u5EA6\u51CF\u7F1330%\u3002\r"
+  description: "\u4F60\u5B66\u4F1A\u4E86\u4E39\u7530\u8C03\u606F\u6CD5\u3002\u5BD2\u51B7\u6761\u4E0B\u964D\u901F\u5EA6\u51CF\u7F135%\u3002"
   familarityLevel: 0
   duration: 0
   effect: {fileID: 11400000, guid: ef08e53bd862d4b429cae5ac1cf6809d, type: 2}
