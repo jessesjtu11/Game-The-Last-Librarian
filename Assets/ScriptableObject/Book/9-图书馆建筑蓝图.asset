@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f4210ae7abee894eba4e8537419a842, type: 3}
+  m_Name: "9-\u56FE\u4E66\u9986\u5EFA\u7B51\u84DD\u56FE"
+  m_EditorClassIdentifier: 
+  bookID: 9
+  bookName: "\u56FE\u4E66\u9986\u5EFA\u7B51\u84DD\u56FE "
+  description: "\u4E00\u5F20\u4F60\u6240\u5728\u56FE\u4E66\u9986\u7684\u5EFA\u7B51\u84DD\u56FE\u3002\r\n"
+  spawnProbability: 20
+  burnHeatValue: 0.1
+  readHeatCost: 0.3
+  readTimeCost: 10
+  burnTimeCost: 20

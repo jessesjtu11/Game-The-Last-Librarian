@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dfe94c9e7b1bfb48a14f115a0129af3, type: 3}
+  m_Name: SkillDataBase
+  m_EditorClassIdentifier: 
+  skillBookMappings:
+  - bookID: 0
+    skillData: {fileID: 11400000, guid: c35944d5a1a3cf44cbb6c522f6d5617c, type: 2}
+  - bookID: 1
+    skillData: {fileID: 11400000, guid: 171f9b262cfcced49898119586eed068, type: 2}
+  - bookID: 2
+    skillData: {fileID: 11400000, guid: d2966f80babfb1e45bda82f2f3c9eace, type: 2}
+  - bookID: 3
+    skillData: {fileID: 11400000, guid: 9c86d4e751fb88f449b786ac8f03ed3f, type: 2}
+  - bookID: 4
+    skillData: {fileID: 11400000, guid: 4c29c8769a3640647a835497ef54ad19, type: 2}
+  - bookID: 5
+    skillData: {fileID: 11400000, guid: 4dff8e5ba497dfa4c8434c60f40bcf55, type: 2}
+  - bookID: 6
+    skillData: {fileID: 11400000, guid: 6d68c691ec8c664438c189b5b4f70152, type: 2}
+  - bookID: 7
+    skillData: {fileID: 11400000, guid: 39eef00569d065e4c9436c034d035d0c, type: 2}
+  - bookID: 8
+    skillData: {fileID: 11400000, guid: 6d799eba40d833a42be1afd3f2abc5ea, type: 2}
+  - bookID: 9
+    skillData: {fileID: 11400000, guid: 095e769ebd642f449af69b3059710b7f, type: 2}
+  - bookID: 12
+    skillData: {fileID: 11400000, guid: c6f6673afc6be6b46844cade10782edb, type: 2}
+  - bookID: 16
+    skillData: {fileID: 11400000, guid: aa3a6fc4a8e5bbf42bf0937f686e825b, type: 2}
+  - bookID: 19
+    skillData: {fileID: 11400000, guid: f0d95d54fc5241040be27401677c22e5, type: 2}
+  - bookID: 22
+    skillData: {fileID: 11400000, guid: d25c25fe1ddecdb4c9158dc174c1cd83, type: 2}
