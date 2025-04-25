@@ -9,7 +9,7 @@ public class TimeManager : MonoBehaviour
     public static TimeManager Instance { get; private set; }
 
     [Header("时间设置")]
-    [SerializeField, Tooltip("现实时间秒数对应游戏1天")]  private float realSecondsPerDay = 120f;
+    [SerializeField, Tooltip("现实时间秒数对应游戏1天")]  private float realSecondsPerDay = 600f;  
     [SerializeField, Tooltip("时间流逝速度倍率")]  public float timeScale = 1f;
 
     [Header("UI组件")]

@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34cbf96f044de2b4d94f9682f4063692, type: 3}
-  m_Name: 1
+  m_Script: {fileID: 11500000, guid: 22d981e1751648b42adb3cb6cf74395d, type: 3}
+  m_Name: NullEffect
   m_EditorClassIdentifier: 
-  healAmount: 2

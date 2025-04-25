@@ -58,7 +58,10 @@ public class Player : MonoBehaviour
     #region 体温管理
     public void ModifyTemperature(float amount)
     {
-        currentBodyTemp += amount;
+        if(amount<=0)
+            currentBodyTemp += amount;
+        else
+            currentBodyTemp = Mathf.Min(currentBodyTemp + amount, maxBodyTemp); 
         CheckTemperatureEffects(); // 检查体温状态效果
         OnTemperatureChanged?.Invoke(); // 触发体温变化事件
     }

@@ -11,7 +11,7 @@ public class DialogueController : MonoBehaviour
     public static DialogueController Instance { get; private set; }
     [Header("UI Components")]
     [SerializeField] private Image backgroundImage;
-    [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private Text dialogueText;
     [SerializeField] private CanvasGroup dialogueBox;
     [SerializeField] private float fadeDuration = 1f;
 

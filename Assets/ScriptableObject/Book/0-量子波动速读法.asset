@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f4210ae7abee894eba4e8537419a842, type: 3}
-  m_Name: 1 2
+  m_Name: "0-\u91CF\u5B50\u6CE2\u52A8\u901F\u8BFB\u6CD5"
   m_EditorClassIdentifier: 
-  bookID: 2
-  bookName: C
-  description: ccccccccccccccc
-  spawnProbability: 20
+  bookID: 0
+  bookName: "\u91CF\u5B50\u6CE2\u52A8\u901F\u8BFB\u6CD5 "
+  description: "\u4F60\u542C\u8BF4\u8FC7\u91CF\u5B50\u6CE2\u52A8\u5417\uFF1F\u5728\u7FFB\u52A8\u4E66\u9875\u7684\u77AC\u95F4\uFF0C\u77E5\u8BC6\u7684\u6D2A\u6D41\u4F1A\u6D8C\u5165\u8111\u6D77\u3002\r\n"
+  spawnProbability: 30
   burnHeatValue: 0.1
   readHeatCost: 0.3
   readTimeCost: 10

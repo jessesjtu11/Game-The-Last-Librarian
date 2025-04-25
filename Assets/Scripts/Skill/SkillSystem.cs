@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class SkillSystem : MonoBehaviour
 {
@@ -9,7 +9,7 @@ public class SkillSystem : MonoBehaviour
 
     [SerializeField] private SkillDataBase skillDatabase;
     [SerializeField] private GameObject panel;
-    [SerializeField] private TextMeshProUGUI skillDescription;
+    [SerializeField] private Text skillDescription;
     [SerializeField] private float infoShowTime = 1.2f; // 信息显示时间
 
     private Dictionary<int, ActiveSkill> activeSkills = new();

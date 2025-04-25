@@ -12,14 +12,20 @@ public abstract class Room : MonoBehaviour
     
     [Header("组件引用")]
     [SerializeField] private SpriteRenderer backgroundRenderer;
-    [SerializeField] private Transform interactiveObjectsContainer;
+    [SerializeField] protected Transform interactiveObjectsContainer;
     
     private Dictionary<string, GameObject> spawnedObjects = new Dictionary<string, GameObject>();
     public bool allowInteraction=true;
 
+    
+
     protected virtual void Start()
     {
         InitializeRoom();
+    }
+
+    protected virtual void Update(){
+        
     }
 
     protected virtual void InitializeRoom()
@@ -57,14 +63,13 @@ public abstract class Room : MonoBehaviour
 
     public virtual void Load_room_scene()
     {
-        backgroundRenderer.sprite = roomBackground;
-        interactiveObjectsContainer.gameObject.SetActive(true);
+        gameObject.SetActive(true);
     }
 
     public virtual void Unload_room_scene()
     {
-        backgroundRenderer.sprite = null;
-        interactiveObjectsContainer.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+        
     }
 
     public virtual void OnObjectClicked(InteractableObject objData)

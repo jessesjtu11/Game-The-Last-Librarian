@@ -15,7 +15,7 @@ public class Book : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private Canvas infoCanvas;
-    [SerializeField] private TextMeshProUGUI description;
+    [SerializeField] private Text description;
     [SerializeField] private Button burnButton;
     [SerializeField] private Button readButton;
 
@@ -37,7 +37,7 @@ public class Book : MonoBehaviour
     {
         bookID = config.bookID;
         bookName = config.bookName;
-        bookDescription = config.description;
+        bookDescription = string.Format("{0} \n热值：{1}  看完所需热量：{2}", config.description, config.burnHeatValue, config.readHeatCost);
         burnHeatValue = config.burnHeatValue;
         readHeatCost = config.readHeatCost;
         readTimeCost = config.readTimeCost;

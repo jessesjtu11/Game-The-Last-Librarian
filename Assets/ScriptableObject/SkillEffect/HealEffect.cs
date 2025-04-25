@@ -14,3 +14,5 @@ public class HealEffect : SkillEffect
         Player.Instance.currentBodyTemp += healAmount;
     }
 }
+
+

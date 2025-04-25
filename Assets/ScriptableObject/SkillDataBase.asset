@@ -23,3 +23,13 @@ MonoBehaviour:
     skillData: {fileID: 11400000, guid: 9c86d4e751fb88f449b786ac8f03ed3f, type: 2}
   - bookID: 4
     skillData: {fileID: 11400000, guid: 4c29c8769a3640647a835497ef54ad19, type: 2}
+  - bookID: 5
+    skillData: {fileID: 11400000, guid: 4dff8e5ba497dfa4c8434c60f40bcf55, type: 2}
+  - bookID: 6
+    skillData: {fileID: 11400000, guid: 6d68c691ec8c664438c189b5b4f70152, type: 2}
+  - bookID: 7
+    skillData: {fileID: 11400000, guid: 39eef00569d065e4c9436c034d035d0c, type: 2}
+  - bookID: 8
+    skillData: {fileID: 11400000, guid: 6d799eba40d833a42be1afd3f2abc5ea, type: 2}
+  - bookID: 9
+    skillData: {fileID: 11400000, guid: 095e769ebd642f449af69b3059710b7f, type: 2}

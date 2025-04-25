@@ -72,8 +72,8 @@ public class RoomManager : MonoBehaviour
             return;
         }
 
-        allRooms[roomIndex - 1].gameObject.SetActive(true);
-        allRooms[Player.Instance.currentRoomIndex - 1].gameObject.SetActive(false);  //切换房间
+        allRooms[roomIndex - 1].Load_room_scene(); //加载房间场景
+        allRooms[Player.Instance.currentRoomIndex - 1].Unload_room_scene(); //卸载当前房间场景
         Player.Instance.ModifyTemperature(-Calculate_Steps(Player.Instance.currentRoomIndex, roomIndex));
         Player.Instance.currentRoomIndex = roomIndex;
         TimeManager.Instance.AddTime(Calculate_Steps(Player.Instance.currentRoomIndex, roomIndex)); 

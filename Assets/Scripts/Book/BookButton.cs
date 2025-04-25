@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class BookButton : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI titleText;
+    [SerializeField] private Text titleText;
    // [SerializeField] private Image background;
 
     public void Initialize(string title, System.Action onClick, Color stateColor)

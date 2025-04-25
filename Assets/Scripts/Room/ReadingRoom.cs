@@ -21,12 +21,22 @@ public class ReadingRoom : Room
     
     private List<Book> currentBooks = new List<Book>();
 
+    protected override void Update(){
+        base.Update();
+        if( !bookShelfPrefab.activeSelf)
+            interactiveObjectsContainer.gameObject.SetActive(true); // 显示交互物体
+        else
+            Debug.Log("书架已打开，无法交互！");
+
+    }
+
     protected override void Interact(string objectName)
     {
         if (objectName == "BookShelf" && bookShelfPrefab != null)
         {
             bookShelfPrefab.SetActive(true);
             HelperUI.Instance.ShowInteractionUI();
+            interactiveObjectsContainer.gameObject.SetActive(false); // 隐藏交互物体
         }
     }
 
@@ -40,6 +50,7 @@ public class ReadingRoom : Room
     public override void Load_room_scene()
     {
         base.Load_room_scene();
+        GenerateBookCollection();
         RefreshBookShelf();
     }
 
